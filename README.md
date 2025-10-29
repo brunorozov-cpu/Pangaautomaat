@@ -1,2 +1,0 @@
-# Pangaautomaat
-Test
