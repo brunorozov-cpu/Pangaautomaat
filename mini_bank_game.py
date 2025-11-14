@@ -1,3 +1,4 @@
+#from import kaka siin, ALALALALA!
 from turtle import *
 from random import randint
 
@@ -14,10 +15,15 @@ for i in range(4):
 end_fill()
 penup()
 hideturtle()
+import turtle
+konto_tekst = turtle.Turtle()
+konto_tekst.hideturtle()
+konto_tekst.penup()
 
+#Konto loomise kiri
 def kiri(sõnum, y_offset=0):
-    goto(-side/2 + 20, side/2 - 60 + y_offset)
-    write(sõnum, font=("Courier", 14, "normal"))
+    konto_tekst.goto(-side/2 + 20, side/2 - 60 + y_offset)
+    konto_tekst.write(sõnum, font=("Courier", 14, "normal"))
 
 # Vale PIN code
 teade = Turtle()
@@ -26,17 +32,21 @@ teade.penup()
 teade.goto(-side/2 + 20, side/2 - 90)
 teade.color("black")
 
-# Pangaautomaat
-kood1 = "1234"
-kood2 = "0000"
-
-kiri("Tere tulemast pangaautomaati!")
+#Konto loomine
+kiri("Tere tulemast pangaautomaati!", 30) 
+kiri("Loo endale konto!")
+nimi = textinput("Nime küsimine", "Palun sisesta om nimi:")
+kood1 = textinput("PIN-sisestus", "Loo endale PIN-1:")
+kood2 = textinput("PIN-sisestus", "Loo endale PIN-2:")
+konto_tekst.clear()
 
 # PIN-kontroll 3 katsega
 katseid = 3
 while katseid > 0:
+    kiri("Logige sisse pangaautomaati!")
     pin1 = textinput("PIN-sisestus", "Palun sisesta PIN-1:")
     pin2 = textinput("PIN-sisestus", "Palun sisesta PIN-2:")
+    konto_tekst.clear()
     
     if kood1 == pin1 and kood2 == pin2:
         teade.clear()
@@ -48,10 +58,12 @@ while katseid > 0:
             teade.write(f"Vale PIN! Jäänud on {katseid} katset.", font=("Courier", 14, "normal"))
         else:
             teade.write("Konto on lukustatud!", font=("Courier", 14, "normal"))
-            exitonclick()
+            exitonclick(pin2, pin1)
 
 # Kui PIN õige
 konto = 100
+kiri("Pangaautomaat", 20)
+kiri("Tere! " + nimi +"!", -20)
 kiri("Sisenesite kontosse!\n", -80)
 kiri("Teie kontol on " + str(konto) + " €.", -100)
 
