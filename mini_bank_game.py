@@ -83,6 +83,7 @@ else:
     casino = textinput("Kasiino", "Kas soovite teenida raha juurde? (jah/ei)")
     if casino and casino.lower() == "jah":
         kasutaja_valik = textinput("Kasiino", "Red (1) või Black (2)?")
+        konto_tekst.clear()
         try:
             kasutaja_valik = int(kasutaja_valik)
         except:
@@ -95,7 +96,15 @@ else:
             kiri(f"Teie kontol on nüüd {konto}€ ja Paks Rihard.", -220)
         else:
             konto = 0
-            kiri("Sa kaotasid kogu oma raha :(", -190)
+            kiri("Sa kaotasid kogu oma raha :(", 20)
+            screen = getscreen()
+            screen.addshape("bob.gif")
+            p = Turtle()
+            p.shape("bob.gif")
+            p.resizemode("user")
+            p.shapesize(0.5, 0.5)
+            p.penup()
+            p.goto(0, -250)
     else:
         kiri("Ole vaene rott edasi siis...", -190)
 
